@@ -10,7 +10,7 @@ from tkinter import *
 root = tkinter.Tk()
 
 def developCallBack():
-     subprocess.Popen("lxterminal")
+     subprocess.Popen(['lxterminal','--working-directory=/usr/local/bin'])
     
    
    
