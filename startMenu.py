@@ -24,16 +24,16 @@ app.pack(side=TOP)
 
 
 #Linux Mode
-button1 = Button(app, text = "Linux Mode", fg="red")
+button1 = Button(app, text = "Linux Mode", fg="red", cursor="man")
 button1.grid(row=0,column=1,pady=70)
 
 
 #Develop Mode
-developBtn = Button(app, text = "Develop Mode", fg="green", command = developCallBack)
+developBtn = Button(app, text = "Develop Mode", fg="green", command = developCallBack, cursor="pencil")
 developBtn.grid(row=1,column=1,pady=70)
 
 #Play Mode
-playBtn = Button(app, text = "Play Mode", fg="orange")
+playBtn = Button(app, text = "Play Mode", fg="orange", cursor="gumby")
 playBtn.grid(row=2,column=1,pady=70)
 
 
