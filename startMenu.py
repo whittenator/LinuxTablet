@@ -9,8 +9,13 @@ from tkinter import *
 #Create the window
 root = tkinter.Tk()
 
+#Runs the i7 application - requires the 'Linux_all' variant of the Inform 7 installation 
 def developCallBack():
-     subprocess.Popen("lxterminal")
+     subprocess.Popen("i7")
+
+#Runs the Gargoyle interpreter - requires the 'gargoyle-free' package installed
+def playCallBack():
+     subprocess.Popen("gargoyle-free")
     
    
    
@@ -27,13 +32,12 @@ app.pack(side=TOP)
 button1 = Button(app, text = "Linux Mode", fg="red", cursor="man")
 button1.grid(row=0,column=1,pady=70)
 
-
 #Develop Mode
 developBtn = Button(app, text = "Develop Mode", fg="green", command = developCallBack, cursor="pencil")
 developBtn.grid(row=1,column=1,pady=70)
 
 #Play Mode
-playBtn = Button(app, text = "Play Mode", fg="orange", cursor="gumby")
+playBtn = Button(app, text = "Play Mode", fg="orange", command = playCallBack, cursor="gumby")
 playBtn.grid(row=2,column=1,pady=70)
 
 
