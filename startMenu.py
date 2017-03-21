@@ -26,9 +26,9 @@ def developCallBack():
 	subprocess.Popen(['lxterminal',"--geometry=212x127",'--working-directory=/usr/local/bin'])
 	
 	#instructions box
- 	top = Toplevel()
+	top = Toplevel()
 	top.title("Instructions")
-	msg = Message(top, text="Welcome to Develop Mode!\nTo begin developing Inform 7 games\ntype "bin/i7" into the terminal that just popped up!\n")
+	msg = Message(top, text="Welcome to Develop Mode!\nTo begin developing Inform 7 games\ntype bin/i7 into the terminal that just popped up!\n")
 	msg.pack()
 	btn = Button(top, text="Dismiss", command=top.destroy)
 	btn.pack()
