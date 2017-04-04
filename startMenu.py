@@ -19,7 +19,7 @@ playPhoto = PhotoImage(file="PlayMode.png")
 helpPhoto = PhotoImage(file="helpPic.png")
 
 #Background Image
-backgroundPhoto = PhotoImage(file="Background.png")
+#backgroundPhoto = PhotoImage(file="Background.png")
   
 #Runs the i7 application - requires the 'Linux_all' variant of the Inform 7 installation 
 def developCallBack():
@@ -75,10 +75,11 @@ def helpCallBack():
 #Modify root window
 root.title("Linux Tablet Project")
 root.geometry("800x480")
+root.config(bg="black")
 root.attributes('-fullscreen',True)
 root.resizable(False, False)
-background_label = Label(root, image=backgroundPhoto)
-background_label.place(x=0,y=0,relwidth=1,relheight=1)
+#background_label = Label(root, image=backgroundPhoto)
+#background_label.place(x=0,y=0,relwidth=1,relheight=1)
 
 #Command below takes away toolbar at top all together(BECAREFUL!)
 #root.overrideredirect(1)
@@ -103,8 +104,9 @@ playBtn = Button(app, text = "Play Mode", bg="black",bd=0,activebackground="blac
 playBtn.grid(row=2,column=1,pady=30)
 
 #Help Button
-helpBtn = Button(app, text = "help", bg="black", bd=0,activebackground="black" ,highlightthickness = 0, image=helpPhoto, command = helpCallBack, cursor="question_arrow")
-helpBtn.grid(row=2,column=3)
+helpBtn = Button(root, text = "help", bg="black", bd=0,activebackground="black" ,highlightthickness = 0, image=helpPhoto, command = helpCallBack, cursor="question_arrow")
+helpBtn.place(x=750,y=430)
+#helpBtn.grid(row=2,column=3,padx=20)
  
  
 #Kick off the event loop
