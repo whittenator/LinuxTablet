@@ -16,6 +16,7 @@ root = tkinter.Tk()
 devPhoto = PhotoImage(file="DevelopMode.png")
 linPhoto = PhotoImage(file="LinuxMode.png")
 playPhoto = PhotoImage(file="PlayMode.png")
+helpPhoto = PhotoImage(file="helpPic.png")
 
 #Background Image
 backgroundPhoto = PhotoImage(file="Background.png")
@@ -34,6 +35,42 @@ def on_closing():
 
 def linuxCallBack():
         root.destroy()
+
+def helpCallBack():
+                #modify help box window
+	top = Toplevel()
+	top.title("Help Menu")
+	top.geometry("400x240")
+	top.resizable(False, False)
+	#puts scrollbar into window
+	scrollbar = Scrollbar(top)
+	scrollbar.pack(side=RIGHT, fill=Y)
+	#inserts textbox into window
+	textbox = Text(top, height=4, width=50, wrap=WORD)
+	textbox.pack(side=LEFT, fill=BOTH)
+	scrollbar.config(command=textbox.yview)
+	textbox.config(yscrollcommand=scrollbar.set)
+	textbox.insert(END, """Linux Tablet Help Menu
+                                                1. Linux Mode:
+                                                In this mode you can explore Linux OS, Raspbian
+                                                2. Develop Mode:
+                                                After clicking on Develop Mode, you will be prompted with a terminal. Simply type i7 and the Inform 7 terminal editor will launch
+                                                3. Play Mode:
+                                                After clicking on Play Mode, Gargoyle for Inform 7 will launch. You will be brought to the folder where Inform 7 games are stored. Double click on the game you want to play.
+                                                FAQ:
+                                                Q-How do I import new games?\nA-\n1.Open Linux mode\n2. Navigate to the folder where Inform 7 games are stored\n3. Drag files into this folder from a USB drive or downloaded files from the web
+                                                Q-Where can I find Infrom 7 games online?\nA-You can download games from Inform 7 website or search for games online in any search engine
+                                                Q-Where can I learn more about the Inform 7 programming language?\nA-check out the documentation on Inform 7's website at: www.inform7.com
+                                                Q-What are the Inform 7 keywords to use when I am in a game?\nA-There are many different keywords in Inform 7 to use to interact with the game. In order to see which keywords your game uses, type 'help' when in a game. To see all keywords used by Inform 7, go to www.Inform7.com
+                                                Q-How do I develop Inform 7 games in something other than the terminal?\nA-As of now, the terminal editor is the only way to develop Inform 7 games in Raspbian.
+                                                Linux Tablet Project Information:
+                                                Developers: Anthony Stewart, Dale Marcot, and Travis Whitten\nVersion: 3.0\nAdvisor: Professor Van Scoy""")
+
+
+
+
+
+        
         
 #Modify root window
 root.title("Linux Tablet Project")
@@ -54,16 +91,20 @@ app.pack(side=TOP)
 
 
 #Linux Mode
-button1 = Button(app, text = "Linux Mode",bg="black",bd=0, highlightthickness = 0,image=linPhoto, command = linuxCallBack, cursor="man")
+button1 = Button(app, text = "Linux Mode",bg="black",bd=0, activebackground="black", highlightthickness = 0,image=linPhoto, command = linuxCallBack, cursor="man")
 button1.grid(row=0,column=1,pady=30)
   
 #Develop Mode
-developBtn = Button(app, text = "Develop Mode", bg="black",bd=0, highlightthickness = 0, image=devPhoto, command = developCallBack, cursor="pencil")
+developBtn = Button(app, text = "Develop Mode", bg="black",bd=0, activebackground="black",highlightthickness = 0, image=devPhoto, command = developCallBack, cursor="pencil")
 developBtn.grid(row=1,column=1,pady=30)
   
 #Play Mode
-playBtn = Button(app, text = "Play Mode", bg="black",bd=0, highlightthickness = 0, image=playPhoto, command = playCallBack, cursor="gumby")
+playBtn = Button(app, text = "Play Mode", bg="black",bd=0,activebackground="black" ,highlightthickness = 0, image=playPhoto, command = playCallBack, cursor="gumby")
 playBtn.grid(row=2,column=1,pady=30)
+
+#Help Button
+helpBtn = Button(app, text = "help", bg="black", bd=0,activebackground="black" ,highlightthickness = 0, image=helpPhoto, command = helpCallBack, cursor="question_arrow")
+helpBtn.grid(row=2,column=3)
  
  
 #Kick off the event loop
