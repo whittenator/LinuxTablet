@@ -13,14 +13,17 @@ from tkinter import messagebox
 root = tkinter.Tk()
 
 #Button Images
-devPhoto = PhotoImage(file="devPic.png")
-linPhoto = PhotoImage(file="linPic.png")
-playPhoto = PhotoImage(file="playPic.png")
+devPhoto = PhotoImage(file="DevelopMode.png")
+linPhoto = PhotoImage(file="LinuxMode.png")
+playPhoto = PhotoImage(file="PlayMode.png")
+
+#Background Image
+backgroundPhoto = PhotoImage(file="Background.png")
   
 #Runs the i7 application - requires the 'Linux_all' variant of the Inform 7 installation 
 def developCallBack():
 	#subprocess.Popen("i7") 
-	subprocess.Popen(['lxterminal','--working-directory=/usr/local/bin'])
+	subprocess.Popen(['lxterminal',"--geometry=50x50",'--working-directory=/usr/local/bin'])
  
 #Runs the Gargoyle interpreter - requires the 'gargoyle-free' package installed
 def playCallBack():
@@ -28,32 +31,39 @@ def playCallBack():
 
 def on_closing():
      messagebox.askokcancel("Quit", "YOU MUST PICK A MODE!")
-	 
+
+def linuxCallBack():
+        root.destroy()
+        
 #Modify root window
 root.title("Linux Tablet Project")
 root.geometry("800x480")
+root.attributes('-fullscreen',True)
 root.resizable(False, False)
+background_label = Label(root, image=backgroundPhoto)
+background_label.place(x=0,y=0,relwidth=1,relheight=1)
+
 #Command below takes away toolbar at top all together(BECAREFUL!)
 #root.overrideredirect(1)
 
 #Uncomment line below to make it to where the user can't leave
 #root.protocol("WM_DELETE_WINDOW", on_closing)
 
-app = Frame(root,width=800,height=480)
+app = Frame(root,width=800,height=480,bg="black")
 app.pack(side=TOP)
-  
+
 
 #Linux Mode
-button1 = Button(app, text = "Linux Mode", fg="red", image=linPhoto, cursor="man")
-button1.grid(row=0,column=1,pady=60)
+button1 = Button(app, text = "Linux Mode",bg="black",bd=0, highlightthickness = 0,image=linPhoto, command = linuxCallBack, cursor="man")
+button1.grid(row=0,column=1,pady=30)
   
 #Develop Mode
-developBtn = Button(app, text = "Develop Mode", fg="green", image=devPhoto, command = developCallBack, cursor="pencil")
-developBtn.grid(row=1,column=1,pady=60)
+developBtn = Button(app, text = "Develop Mode", bg="black",bd=0, highlightthickness = 0, image=devPhoto, command = developCallBack, cursor="pencil")
+developBtn.grid(row=1,column=1,pady=30)
   
 #Play Mode
-playBtn = Button(app, text = "Play Mode", fg="orange", image=playPhoto, command = playCallBack, cursor="gumby")
-playBtn.grid(row=2,column=1,pady=60)
+playBtn = Button(app, text = "Play Mode", bg="black",bd=0, highlightthickness = 0, image=playPhoto, command = playCallBack, cursor="gumby")
+playBtn.grid(row=2,column=1,pady=30)
  
  
 #Kick off the event loop
